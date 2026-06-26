@@ -4,6 +4,39 @@ A RESTful e-commerce backend built with **Java**, **Spring Boot**, **Spring Secu
 
 ---
 
+![easyshop1.png](images/easyshop1.png)
+![easyshop2.png](images/easyshop2.png)
+![easyshop3.png](images/easyshop3.png)
+
+### Interesting Code:
+```
+package org.yearup.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:63342")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
+    }
+}
+```
+I enjoyed figuring out this code because it allows requests from IntelliJ's built-in HTML
+server to work correctly. IntelliJ has its Frontend at `http://localhost:63342`. I created code that
+would allow other HTTP requests such as `"GET", "POST", "PUT", "DELETE', and "OPTIONS"` so that the API does
+not get blocked by the browser. I also added on to allow headers and login/session information.
+
+
+---
+
 ## Features
 
 ### Authentication
